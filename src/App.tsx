@@ -1,25 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { LoginPage } from './Pages/Login/Login';
+import { UserListPage } from './Pages/UserList/UserList';
+import { HomePage } from './Pages/Home/Home';
+import { UserDetailsPage } from './Pages/UserDetails/UserDetails';
+import { OrganismSideNavBar } from "library-tfm";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/login"  element={<LoginPage/>} />
+        <Route path="/" element={<HomePage/>} />
+        <Route path="/user-list" element={<UserListPage/>} />
+        <Route path="/user/:id" element={<UserDetailsPage/>} />
+      </Routes>
+    </Router>
   );
 }
 
